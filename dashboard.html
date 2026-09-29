@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Recruiter Dashboard — ScoutGG</title>
+<meta name="description" content="Team recruiter dashboard. Browse AI-scored candidates and track your roster pipeline."/>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="dashboard.css"/>
+</head>
+<body>
+<canvas id="particles-canvas"></canvas>
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo"><div class="logo-icon">⚡</div>Scout<span class="gradient-text">GG</span></a>
+    <div class="nav-links">
+      <a href="discover.html" class="nav-link">Discover</a>
+      <a href="dashboard.html" class="nav-link active">For Teams</a>
+      <a href="index.html#features" class="nav-link">Features</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+    </div>
+    <div class="team-badge">
+      <div class="team-avatar">V</div>
+      <span>Vortex Esports</span>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+  <div class="dashboard-layout container">
+    <aside class="dash-sidebar">
+      <div class="sidebar-section">
+        <div class="section-label">Navigation</div>
+        <a href="#" class="sidebar-link active" onclick="return showTab('overview',this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Overview
+        </a>
+        <a href="#" class="sidebar-link" onclick="return showTab('pipeline',this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Pipeline
+        </a>
+        <a href="#" class="sidebar-link" onclick="return showTab('trials',this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Trials
+        </a>
+        <a href="#" class="sidebar-link" onclick="return showTab('roster',this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Roster
+        </a>
+      </div>
+    </aside>
+
+    <main class="dash-main">
+      <!-- OVERVIEW -->
+      <div id="tab-overview" class="dash-tab">
+        <div class="dash-greeting">
+          <div>
+            <h1 style="font-size:1.8rem">Good Evening, <span class="gradient-text">Recruiter 👋</span></h1>
+            <p style="color:var(--text-secondary);margin-top:4px;font-size:0.9rem">3 new trial requests · Season 1 Week 4</p>
+          </div>
+          <a href="discover.html" class="btn btn-primary btn-sm">+ Find Players</a>
+        </div>
+        <div class="dash-stats">
+          <div class="dash-stat-card"><div class="dash-stat-icon" style="background:rgba(0,212,255,0.1);border-color:var(--border-cyan)">👁️</div><div><div class="dash-stat-num">247</div><div class="dash-stat-label">Players Scouted</div></div></div>
+          <div class="dash-stat-card"><div class="dash-stat-icon" style="background:rgba(139,92,246,0.1);border-color:var(--border-purple)">📋</div><div><div class="dash-stat-num">12</div><div class="dash-stat-label">Active Pipeline</div></div></div>
+          <div class="dash-stat-card"><div class="dash-stat-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.3)">✅</div><div><div class="dash-stat-num">3</div><div class="dash-stat-label">Trials This Week</div></div></div>
+          <div class="dash-stat-card"><div class="dash-stat-icon" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.3)">⚡</div><div><div class="dash-stat-num">88.4</div><div class="dash-stat-label">Avg Candidate Score</div></div></div>
+        </div>
+        <div class="dash-section-header">
+          <h2 style="font-size:1.2rem">AI Recommended for You</h2>
+          <a href="discover.html" style="color:var(--cyan);font-size:0.84rem;text-decoration:none">View all →</a>
+        </div>
+        <div class="dash-player-list">
+          <div class="dash-player-row" onclick="window.location='profile.html'">
+            <div class="pc-avatar" style="background:linear-gradient(135deg,#EC4899,#8B5CF6);width:42px;height:42px;font-size:0.9rem;flex-shrink:0">R</div>
+            <div style="flex:1;min-width:0"><div style="font-weight:700">R3FLEX</div><div style="font-size:0.75rem;color:var(--text-muted)">IGL · Radiant · Bangalore</div></div>
+            <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
+              <span class="badge badge-purple">Radiant</span><span class="badge badge-green">Open</span>
+              <div class="score-chip" style="font-size:0.9rem">92</div>
+            </div>
+            <div class="fit-score"><span style="font-size:0.7rem;color:var(--text-muted)">FIT</span><span style="font-weight:700;color:var(--green)">96%</span></div>
+          </div>
+          <div class="dash-player-row" onclick="window.location='profile.html'">
+            <div class="pc-avatar" style="background:linear-gradient(135deg,#00D4FF,#8B5CF6);width:42px;height:42px;font-size:0.9rem;flex-shrink:0">S</div>
+            <div style="flex:1;min-width:0"><div style="font-weight:700">ShadowFPS</div><div style="font-size:0.75rem;color:var(--text-muted)">Duelist · Immortal 2 · Delhi</div></div>
+            <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
+              <span class="badge badge-cyan">Immortal 2</span><span class="badge badge-green">Open</span>
+              <div class="score-chip" style="font-size:0.9rem">87</div>
+            </div>
+            <div class="fit-score"><span style="font-size:0.7rem;color:var(--text-muted)">FIT</span><span style="font-weight:700;color:var(--green)">91%</span></div>
+          </div>
+          <div class="dash-player-row" onclick="window.location='profile.html'">
+            <div class="pc-avatar" style="background:linear-gradient(135deg,#10B981,#00D4FF);width:42px;height:42px;font-size:0.9rem;flex-shrink:0">Z</div>
+            <div style="flex:1;min-width:0"><div style="font-weight:700">ZephyrAim</div><div style="font-size:0.75rem;color:var(--text-muted)">Duelist · Immortal 1 · Pune</div></div>
+            <div style="display:flex;gap:8px;align-items:center;flex-shrink:0">
+              <span class="badge badge-cyan">Immortal 1</span><span class="badge badge-green">Open</span>
+              <div class="score-chip" style="font-size:0.9rem">81</div>
+            </div>
+            <div class="fit-score"><span style="font-size:0.7rem;color:var(--text-muted)">FIT</span><span style="font-weight:700;color:var(--amber)">82%</span></div>
+          </div>
+        </div>
+        <div class="dash-section-header" style="margin-top:32px">
+          <h2 style="font-size:1.2rem">Recent Activity</h2>
+        </div>
+        <div class="activity-feed">
+          <div class="activity-item"><div class="activity-dot" style="background:var(--green)"></div><div><strong>R3FLEX</strong> accepted your trial invite for Saturday</div><span class="activity-time">2h ago</span></div>
+          <div class="activity-item"><div class="activity-dot" style="background:var(--cyan)"></div><div><strong>PhantomX</strong> viewed your team profile</div><span class="activity-time">5h ago</span></div>
+          <div class="activity-item"><div class="activity-dot" style="background:var(--purple)"></div><div>AI scouting report generated for <strong>NightOwl</strong></div><span class="activity-time">1d ago</span></div>
+          <div class="activity-item"><div class="activity-dot" style="background:var(--amber)"></div><div><strong>ShadowFPS</strong> joined Discord for trial</div><span class="activity-time">2d ago</span></div>
+        </div>
+      </div>
+
+      <!-- PIPELINE -->
+      <div id="tab-pipeline" class="dash-tab" style="display:none">
+        <h1 style="font-size:1.8rem;margin-bottom:24px">Recruitment <span class="gradient-text">Pipeline</span></h1>
+        <div class="pipeline-board">
+          <div class="pipeline-col">
+            <div class="pipeline-col-header"><span>Shortlisted</span><span class="badge badge-cyan">4</span></div>
+            <div class="pipeline-card"><div style="font-weight:700">R3FLEX</div><div style="font-size:0.75rem;color:var(--text-muted)">IGL · Radiant</div><div style="margin-top:8px"><span class="score-chip" style="font-size:0.8rem">92</span></div></div>
+            <div class="pipeline-card"><div style="font-weight:700">PhantomX</div><div style="font-size:0.75rem;color:var(--text-muted)">Duelist · Radiant</div><div style="margin-top:8px"><span class="score-chip" style="font-size:0.8rem">95</span></div></div>
+          </div>
+          <div class="pipeline-col">
+            <div class="pipeline-col-header"><span>Contacted</span><span class="badge badge-purple">3</span></div>
+            <div class="pipeline-card"><div style="font-weight:700">ShadowFPS</div><div style="font-size:0.75rem;color:var(--text-muted)">Duelist · Immortal 2</div><div style="margin-top:8px"><span class="score-chip" style="font-size:0.8rem">87</span></div></div>
+            <div class="pipeline-card"><div style="font-weight:700">TitanIGL</div><div style="font-size:0.75rem;color:var(--text-muted)">IGL · Immortal 2</div><div style="margin-top:8px"><span class="score-chip" style="font-size:0.8rem">88</span></div></div>
+          </div>
+          <div class="pipeline-col">
+            <div class="pipeline-col-header"><span>Trial Scheduled</span><span class="badge badge-amber">2</span></div>
+            <div class="pipeline-card pipeline-card-highlight"><div style="font-weight:700">NightOwl</div><div style="font-size:0.75rem;color:var(--text-muted)">Sentinel · Immortal 3</div><div style="margin-top:8px;font-size:0.75rem;color:var(--cyan)">📅 Sat 10 May · 8PM</div><div style="margin-top:6px"><span class="score-chip" style="font-size:0.8rem">84</span></div></div>
+          </div>
+          <div class="pipeline-col">
+            <div class="pipeline-col-header"><span>Offer Made</span><span class="badge badge-green">1</span></div>
+            <div class="pipeline-card pipeline-card-success"><div style="font-weight:700">ZephyrAim</div><div style="font-size:0.75rem;color:var(--text-muted)">Duelist · Immortal 1</div><div style="margin-top:8px;font-size:0.75rem;color:var(--green)">✓ Offer sent</div><div style="margin-top:6px"><span class="score-chip" style="font-size:0.8rem">81</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRIALS -->
+      <div id="tab-trials" class="dash-tab" style="display:none">
+        <h1 style="font-size:1.8rem;margin-bottom:24px">Trial <span class="gradient-text">Schedule</span></h1>
+        <div class="trials-list">
+          <div class="trial-card">
+            <div class="trial-date"><div class="trial-day">10</div><div class="trial-month">MAY</div></div>
+            <div class="trial-info"><div class="trial-name">NightOwl <span class="badge badge-cyan" style="margin-left:8px">Sentinel</span></div><div class="trial-meta">8:00 PM IST · Custom Ranked · Bind</div></div>
+            <div style="display:flex;gap:8px;align-items:center"><a href="#" class="btn btn-ghost btn-sm">Discord Invite</a><a href="profile.html" class="btn btn-primary btn-sm">View Profile</a></div>
+          </div>
+          <div class="trial-card">
+            <div class="trial-date"><div class="trial-day">12</div><div class="trial-month">MAY</div></div>
+            <div class="trial-info"><div class="trial-name">R3FLEX <span class="badge badge-purple" style="margin-left:8px">IGL</span></div><div class="trial-meta">7:30 PM IST · Scrim vs Team Delta</div></div>
+            <div style="display:flex;gap:8px;align-items:center"><a href="#" class="btn btn-ghost btn-sm">Discord Invite</a><a href="profile.html" class="btn btn-primary btn-sm">View Profile</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROSTER -->
+      <div id="tab-roster" class="dash-tab" style="display:none">
+        <h1 style="font-size:1.8rem;margin-bottom:24px">Current <span class="gradient-text">Roster</span></h1>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px">
+          <div class="section-label" style="margin-bottom:16px">Vortex Esports — Valorant</div>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div class="roster-row"><div class="pc-avatar" style="background:linear-gradient(135deg,#00D4FF,#8B5CF6);width:36px;height:36px;font-size:0.8rem">S</div><div style="flex:1">Striker77 <span style="color:var(--text-muted)">· Duelist</span></div><span class="badge badge-cyan">Captain</span><span class="badge badge-green">Active</span></div>
+            <div class="roster-row"><div class="pc-avatar" style="background:linear-gradient(135deg,#8B5CF6,#EC4899);width:36px;height:36px;font-size:0.8rem">V</div><div style="flex:1">VoidMaster <span style="color:var(--text-muted)">· IGL</span></div><span class="badge badge-green">Active</span></div>
+            <div class="roster-row"><div class="pc-avatar" style="background:linear-gradient(135deg,#06B6D4,#10B981);width:36px;height:36px;font-size:0.8rem">F</div><div style="flex:1">FrostByte <span style="color:var(--text-muted)">· Sentinel</span></div><span class="badge badge-green">Active</span></div>
+            <div class="roster-row"><div class="pc-avatar" style="background:linear-gradient(135deg,#EC4899,#F59E0B);width:36px;height:36px;font-size:0.8rem">L</div><div style="flex:1">LunaSupport <span style="color:var(--text-muted)">· Support</span></div><span class="badge badge-green">Active</span></div>
+            <div class="roster-row" style="border:none"><div class="pc-avatar" style="background:linear-gradient(135deg,#F59E0B,#EF4444);width:36px;height:36px;font-size:0.8rem">F</div><div style="flex:1">Flasher <span style="color:var(--text-muted)">· Initiator</span></div><span class="badge badge-amber">Trialing</span></div>
+          </div>
+        </div>
+        <p style="color:var(--text-muted);font-size:0.84rem;text-align:center;margin-top:20px">Need a sub? <a href="discover.html" style="color:var(--cyan)">Browse available players →</a></p>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="particles.js"></script>
+<script>
+function showTab(id, el) {
+  document.querySelectorAll('.dash-tab').forEach(t => t.style.display = 'none');
+  document.getElementById('tab-' + id).style.display = 'block';
+  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+  el.classList.add('active');
+  return false;
+}
+</script>
+</body>
+</html>

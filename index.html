@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ScoutGG — AI-Powered Esports Scouting & Recruitment</title>
+<meta name="description" content="Moneyball for esports recruiting. Discover underrated talent using AI scouting metrics, behavioral analytics, and community reputation — not just KD ratio."/>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="landing.css"/>
+</head>
+<body>
+<canvas id="particles-canvas"></canvas>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">⚡</div>
+      Scout<span class="gradient-text">GG</span>
+    </a>
+    <div class="nav-links">
+      <a href="discover.html" class="nav-link">Discover</a>
+      <a href="dashboard.html" class="nav-link">For Teams</a>
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <a href="dashboard.html" class="btn btn-ghost btn-sm">Log In</a>
+      <a href="profile.html" class="btn btn-primary btn-sm">Get Scouted</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-orb orb-cyan"></div>
+  <div class="hero-bg-orb orb-purple"></div>
+  <div class="container hero-inner">
+    <div class="hero-badge anim-fade-up">
+      <span class="avail-dot avail-open"></span>
+      Now live in India — Valorant Season 1
+    </div>
+    <h1 class="hero-title anim-fade-up" style="animation-delay:0.1s">
+      The Smartest Way to<br/>
+      <span class="gradient-text">Scout Esports Talent</span>
+    </h1>
+    <p class="hero-sub anim-fade-up" style="animation-delay:0.2s">
+      Forget KD ratios. ScoutGG uses 11 AI-powered metrics — clutch rate, team communication, pressure handling, 
+      consistency, and community reputation — to surface players your leaderboard will never show.
+    </p>
+    <div class="hero-ctas anim-fade-up" style="animation-delay:0.3s">
+      <a href="profile.html" class="btn btn-primary btn-lg">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Create Player Profile
+      </a>
+      <a href="dashboard.html" class="btn btn-secondary btn-lg">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Scout Players
+      </a>
+    </div>
+    <div class="hero-stats anim-fade-up" style="animation-delay:0.4s">
+      <div class="hero-stat"><span class="hero-stat-num">2,840+</span><span>Player Profiles</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-num">143</span><span>Teams Recruiting</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-num">38</span><span>College Partners</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><span class="hero-stat-num">11</span><span>AI Scouting Metrics</span></div>
+    </div>
+  </div>
+
+  <!-- Floating player cards preview -->
+  <div class="hero-cards-preview">
+    <div class="preview-card card-glass anim-float" style="animation-delay:0s">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div class="preview-avatar" style="background:linear-gradient(135deg,#00D4FF,#8B5CF6)">S</div>
+        <div><div style="font-weight:700;font-size:0.9rem">ShadowFPS</div><div style="font-size:0.72rem;color:var(--text-secondary)">Duelist · Delhi</div></div>
+        <div class="score-chip" style="margin-left:auto">87</div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span class="badge badge-cyan">Immortal 2</span>
+        <span class="badge badge-green">Open to trials</span>
+      </div>
+    </div>
+    <div class="preview-card card-glass anim-float" style="animation-delay:1.5s;margin-top:20px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div class="preview-avatar" style="background:linear-gradient(135deg,#EC4899,#8B5CF6)">R</div>
+        <div><div style="font-weight:700;font-size:0.9rem">R3FLEX</div><div style="font-size:0.72rem;color:var(--text-secondary)">IGL · Bangalore</div></div>
+        <div class="score-chip" style="margin-left:auto">92</div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span class="badge badge-purple">Radiant</span>
+        <span class="badge badge-amber">Trial Week</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SCOUTGG -->
+<section id="features" class="section-why">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="badge badge-purple" style="margin-bottom:16px">The Moneyball Difference</div>
+      <h2>Stats platforms show <em style="color:var(--red)">what happened.</em><br/>ScoutGG shows <em class="gradient-text">who the player is.</em></h2>
+      <p style="color:var(--text-secondary);margin-top:16px;max-width:560px;margin-left:auto;margin-right:auto">
+        Any tool can show KD. Only ScoutGG tells you if that player communicates under pressure, stays consistent in tournaments, and fits your team's culture.
+      </p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon" style="background:linear-gradient(135deg,rgba(0,212,255,0.2),rgba(0,212,255,0.05));border-color:var(--border-cyan)">🎯</div>
+        <h3>11 AI Scouting Metrics</h3>
+        <p>Clutch score, consistency, teamplay, pressure handling, toxicity risk, improvement velocity — built to predict professional performance.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:linear-gradient(135deg,rgba(139,92,246,0.2),rgba(139,92,246,0.05));border-color:var(--border-purple)">🤖</div>
+        <h3>AI VOD Analysis</h3>
+        <p>Our AI watches gameplay clips and extracts communication quality, decision patterns, and clutch behavior — insights no stat sheet captures.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:linear-gradient(135deg,rgba(236,72,153,0.2),rgba(236,72,153,0.05));border-color:rgba(236,72,153,0.3)">💬</div>
+        <h3>Discord Reputation Layer</h3>
+        <p>Community endorsements, moderation history, scrim behavior, and team chemistry signals — the stuff leaderboards never see.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(16,185,129,0.05));border-color:rgba(16,185,129,0.3)">✅</div>
+        <h3>Verified Profiles Only</h3>
+        <p>Riot API-verified rank, tournament result confirmation, anti-smurf detection. No fake accounts, no inflated stats.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(245,158,11,0.05));border-color:rgba(245,158,11,0.3)">📺</div>
+        <h3>YouTube Integration</h3>
+        <p>Players link their channels. Recruiters watch embedded highlights. AI analyzes clip content for communication and gameplay quality.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:linear-gradient(135deg,rgba(0,212,255,0.2),rgba(139,92,246,0.1));border-color:var(--border-cyan)">🎓</div>
+        <h3>College Esports Mode</h3>
+        <p>Dedicated tools for university teams, inter-college tournaments, scholarship tracking, and campus esports recruitment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI METRICS SHOWCASE -->
+<section class="section-metrics">
+  <div class="container">
+    <div class="metrics-inner">
+      <div class="metrics-left">
+        <div class="badge badge-cyan" style="margin-bottom:16px">AI Scoring System</div>
+        <h2>Beyond KD Ratio.<br/><span class="gradient-text">Meet the ScoutGG Score.</span></h2>
+        <p style="color:var(--text-secondary);margin:16px 0 28px">
+          11 behavioral and performance metrics, each explaining <em>why</em> a player is rated the way they are. No black boxes. Full explainability.
+        </p>
+        <div class="metric-list">
+          <div class="metric-item"><div class="metric-dot" style="background:var(--cyan)"></div><span>Consistency Score</span></div>
+          <div class="metric-item"><div class="metric-dot" style="background:var(--purple)"></div><span>Clutch Score</span></div>
+          <div class="metric-item"><div class="metric-dot" style="background:var(--pink)"></div><span>Teamplay Score</span></div>
+          <div class="metric-item"><div class="metric-dot" style="background:var(--green)"></div><span>Communication Score</span></div>
+          <div class="metric-item"><div class="metric-dot" style="background:var(--amber)"></div><span>Pressure Handling</span></div>
+          <div class="metric-item"><div class="metric-dot" style="background:#06B6D4"></div><span>Adaptability Score</span></div>
+          <div class="metric-item"><div class="metric-dot" style="background:#A78BFA"></div><span>Leadership Score</span></div>
+          <div class="metric-item"><div class="metric-dot" style="background:var(--green)"></div><span>Improvement Velocity</span></div>
+          <div class="metric-item"><div class="metric-dot" style="background:var(--red)"></div><span>Toxicity Risk (inverted)</span></div>
+          <div class="metric-item"><div class="metric-dot" style="background:var(--amber)"></div><span>Community Reputation</span></div>
+          <div class="metric-item"><div class="metric-dot" style="background:var(--purple)"></div><span>Content Professionalism</span></div>
+        </div>
+        <a href="profile.html" class="btn btn-primary" style="margin-top:28px">See a Sample Profile →</a>
+      </div>
+      <div class="metrics-right">
+        <div class="radar-card card-glass">
+          <div class="radar-card-header">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div class="preview-avatar" style="background:linear-gradient(135deg,#00D4FF,#8B5CF6);width:40px;height:40px;font-size:1rem">R</div>
+              <div>
+                <div style="font-weight:700">R3FLEX</div>
+                <div style="font-size:0.78rem;color:var(--text-secondary)">IGL · Radiant · Bangalore</div>
+              </div>
+            </div>
+            <div class="score-pill">92</div>
+          </div>
+          <canvas id="heroRadar" width="280" height="280"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section-pricing">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="badge badge-purple" style="margin-bottom:16px">Pricing</div>
+      <h2>Built for the <span class="gradient-text">Indian Esports Ecosystem</span></h2>
+      <p style="color:var(--text-secondary);margin-top:12px">Players join free. Teams pay for access. Everyone wins.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tier">Player Free</div>
+        <div class="pricing-price">₹0<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>✓ Verified player profile</li>
+          <li>✓ 3 highlight clip uploads</li>
+          <li>✓ Basic ScoutGG score (3 metrics)</li>
+          <li>✓ Apply to open tryouts</li>
+          <li>✓ Discord community access</li>
+        </ul>
+        <a href="profile.html" class="btn btn-ghost" style="width:100%;justify-content:center">Create Profile</a>
+      </div>
+      <div class="pricing-card pricing-featured">
+        <div class="pricing-popular">Most Popular</div>
+        <div class="pricing-tier">Player Pro</div>
+        <div class="pricing-price">₹299<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>✓ Full 11-metric AI report</li>
+          <li>✓ Unlimited clips + YouTube sync</li>
+          <li>✓ Visibility boost in search</li>
+          <li>✓ Verified Pro badge</li>
+          <li>✓ AI-generated "Recruit Me" resume</li>
+          <li>✓ Priority in recruiter alerts</li>
+        </ul>
+        <a href="profile.html" class="btn btn-primary" style="width:100%;justify-content:center">Go Pro</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">Team Pro</div>
+        <div class="pricing-price">₹4,999<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>✓ Unlimited player searches</li>
+          <li>✓ Full AI reports on any player</li>
+          <li>✓ Roster comparison & fit score</li>
+          <li>✓ AI team recommendations</li>
+          <li>✓ Discord bot (trial coordination)</li>
+          <li>✓ Recruitment analytics</li>
+        </ul>
+        <a href="dashboard.html" class="btn btn-secondary" style="width:100%;justify-content:center">Scout Now</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">College Mode</div>
+        <div class="pricing-price">₹999<span>/sem</span></div>
+        <ul class="pricing-features">
+          <li>✓ Roster management</li>
+          <li>✓ Inter-college tournaments</li>
+          <li>✓ Scholarship tracking</li>
+          <li>✓ Faculty advisor access</li>
+          <li>✓ University branding</li>
+        </ul>
+        <a href="#" class="btn btn-ghost" style="width:100%;justify-content:center">Partner With Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section">
+  <div class="cta-orb"></div>
+  <div class="container" style="text-align:center;position:relative;z-index:1">
+    <h2 style="margin-bottom:16px">Your next star player is<br/><span class="gradient-text">hiding in Platinum rank.</span></h2>
+    <p style="color:var(--text-secondary);margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto">
+      Join 143 teams already scouting smarter. The talent is out there — ScoutGG finds it.
+    </p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="dashboard.html" class="btn btn-primary btn-lg">Start Scouting Free</a>
+      <a href="discover.html" class="btn btn-secondary btn-lg">Browse Players</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>
+      <a href="index.html" class="nav-logo" style="text-decoration:none;display:inline-flex;margin-bottom:12px">
+        <div class="logo-icon">⚡</div>
+        Scout<span class="gradient-text">GG</span>
+      </a>
+      <p style="color:var(--text-muted);font-size:0.8rem;max-width:220px">Moneyball for esports recruiting. India-first, going global.</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:12px">Platform</div>
+        <a href="discover.html">Discover Players</a>
+        <a href="dashboard.html">Recruiter Dashboard</a>
+        <a href="profile.html">Player Profiles</a>
+      </div>
+      <div>
+        <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:12px">Community</div>
+        <a href="#">Discord Server</a>
+        <a href="#">YouTube</a>
+        <a href="#">College Esports</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <span style="color:var(--text-muted);font-size:0.8rem">© 2025 ScoutGG. Built for the next generation of esports.</span>
+      <span style="color:var(--text-muted);font-size:0.8rem">India 🇮🇳 · Valorant Season 1</span>
+    </div>
+  </div>
+</footer>
+
+<script src="particles.js"></script>
+<script>
+// Hero radar chart
+window.addEventListener('load', () => {
+  const canvas = document.getElementById('heroRadar');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const labels = ['Clutch','Consistent','Teamplay','Comms','Pressure','Adapt','Leadership'];
+  const data = [94,89,88,85,91,87,93];
+  drawRadar(ctx, canvas.width, canvas.height, labels, data);
+});
+
+function drawRadar(ctx, w, h, labels, data) {
+  const cx = w/2, cy = h/2, r = Math.min(w,h)/2 - 40;
+  const n = labels.length;
+  const angle = (i) => (i * 2 * Math.PI / n) - Math.PI/2;
+  ctx.clearRect(0,0,w,h);
+  // grid
+  [0.2,0.4,0.6,0.8,1].forEach(scale => {
+    ctx.beginPath();
+    for(let i=0;i<n;i++){
+      const x=cx+Math.cos(angle(i))*r*scale, y=cy+Math.sin(angle(i))*r*scale;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = scale===1?'rgba(139,92,246,0.3)':'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  });
+  // axes
+  for(let i=0;i<n;i++){
+    ctx.beginPath(); ctx.moveTo(cx,cy);
+    ctx.lineTo(cx+Math.cos(angle(i))*r, cy+Math.sin(angle(i))*r);
+    ctx.strokeStyle='rgba(255,255,255,0.07)'; ctx.lineWidth=1; ctx.stroke();
+  }
+  // data fill
+  ctx.beginPath();
+  data.forEach((d,i)=>{
+    const scale=d/100, x=cx+Math.cos(angle(i))*r*scale, y=cy+Math.sin(angle(i))*r*scale;
+    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+  });
+  ctx.closePath();
+  const grad=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+  grad.addColorStop(0,'rgba(139,92,246,0.4)');
+  grad.addColorStop(1,'rgba(0,212,255,0.1)');
+  ctx.fillStyle=grad; ctx.fill();
+  ctx.strokeStyle='rgba(0,212,255,0.8)'; ctx.lineWidth=2; ctx.stroke();
+  // data dots
+  data.forEach((d,i)=>{
+    const scale=d/100, x=cx+Math.cos(angle(i))*r*scale, y=cy+Math.sin(angle(i))*r*scale;
+    ctx.beginPath(); ctx.arc(x,y,4,0,Math.PI*2);
+    ctx.fillStyle='#00D4FF'; ctx.fill();
+  });
+  // labels
+  ctx.font='bold 10px Inter'; ctx.textAlign='center'; ctx.textBaseline='middle';
+  labels.forEach((l,i)=>{
+    const dist=r+22, x=cx+Math.cos(angle(i))*dist, y=cy+Math.sin(angle(i))*dist;
+    ctx.fillStyle='rgba(255,255,255,0.6)'; ctx.fillText(l,x,y);
+  });
+}
+</script>
+</body>
+</html>

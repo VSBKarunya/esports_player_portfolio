@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Discover Players — ScoutGG</title>
+<meta name="description" content="Browse and filter verified esports players across Valorant, BGMI, and more. Filter by rank, role, region, and ScoutGG AI score."/>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="discover.css"/>
+</head>
+<body>
+<canvas id="particles-canvas"></canvas>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">⚡</div>
+      Scout<span class="gradient-text">GG</span>
+    </a>
+    <div class="nav-links">
+      <a href="discover.html" class="nav-link active">Discover</a>
+      <a href="dashboard.html" class="nav-link">For Teams</a>
+      <a href="index.html#features" class="nav-link">Features</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <a href="dashboard.html" class="btn btn-ghost btn-sm">Log In</a>
+      <a href="profile.html" class="btn btn-primary btn-sm">Get Scouted</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+  <!-- SEARCH HEADER -->
+  <section class="discover-header">
+    <div class="container">
+      <div class="dh-title-row">
+        <div>
+          <h1>Discover <span class="gradient-text">Players</span></h1>
+          <p style="color:var(--text-secondary);margin-top:8px">2,840+ verified profiles · Updated hourly</p>
+        </div>
+        <div class="dh-live">
+          <span class="avail-dot avail-open"></span>
+          Live Database
+        </div>
+      </div>
+      <!-- Search bar -->
+      <div class="search-bar-wrap">
+        <div class="search-bar">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input id="searchInput" type="text" class="search-input" placeholder="Search by IGN, rank, city…" oninput="filterPlayers()"/>
+        </div>
+        <div class="filter-pills">
+          <select id="gameFilter" class="filter-pill" onchange="filterPlayers()">
+            <option value="">All Games</option>
+            <option value="Valorant">Valorant</option>
+            <option value="BGMI">BGMI</option>
+            <option value="CS2">CS2</option>
+          </select>
+          <select id="roleFilter" class="filter-pill" onchange="filterPlayers()">
+            <option value="">All Roles</option>
+            <option value="Duelist">Duelist</option>
+            <option value="IGL">IGL</option>
+            <option value="Support">Support</option>
+            <option value="Sentinel">Sentinel</option>
+            <option value="Initiator">Initiator</option>
+          </select>
+          <select id="rankFilter" class="filter-pill" onchange="filterPlayers()">
+            <option value="">All Ranks</option>
+            <option value="Radiant">Radiant</option>
+            <option value="Immortal">Immortal</option>
+            <option value="Diamond">Diamond</option>
+            <option value="Platinum">Platinum</option>
+          </select>
+          <select id="availFilter" class="filter-pill" onchange="filterPlayers()">
+            <option value="">Any Status</option>
+            <option value="open">Open to Trials</option>
+            <option value="maybe">Considering</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAYER GRID -->
+  <section class="discover-body">
+    <div class="container">
+      <div id="resultsCount" class="results-count"></div>
+      <div id="playerGrid" class="player-grid"></div>
+    </div>
+  </section>
+</div>
+
+<script src="particles.js"></script>
+<script>
+const PLAYERS = [
+  { ign:'ShadowFPS', role:'Duelist', rank:'Immortal 2', game:'Valorant', city:'Delhi', score:87, avail:'open', tags:['Clutch King','Ranked Grinder'], color:'linear-gradient(135deg,#00D4FF,#8B5CF6)', init:'S' },
+  { ign:'R3FLEX', role:'IGL', rank:'Radiant', game:'Valorant', city:'Bangalore', score:92, avail:'open', tags:['Shot Caller','VOD Expert'], color:'linear-gradient(135deg,#EC4899,#8B5CF6)', init:'R' },
+  { ign:'NightOwl', role:'Sentinel', rank:'Immortal 3', game:'Valorant', city:'Mumbai', score:84, avail:'maybe', tags:['Chamber Main','Anchor'], color:'linear-gradient(135deg,#8B5CF6,#06B6D4)', init:'N' },
+  { ign:'StormBreaker', role:'Initiator', rank:'Diamond 3', game:'Valorant', city:'Hyderabad', score:79, avail:'open', tags:['Flash Master','Recon'], color:'linear-gradient(135deg,#F59E0B,#EF4444)', init:'S' },
+  { ign:'ZephyrAim', role:'Duelist', rank:'Immortal 1', game:'Valorant', city:'Pune', score:81, avail:'open', tags:['Consistency','Top Frag'], color:'linear-gradient(135deg,#10B981,#00D4FF)', init:'Z' },
+  { ign:'PhantomX', role:'Duelist', rank:'Radiant', game:'Valorant', city:'Chennai', score:95, avail:'maybe', tags:['Mechanical God','Clutch'], color:'linear-gradient(135deg,#EC4899,#F59E0B)', init:'P' },
+  { ign:'TitanIGL', role:'IGL', rank:'Immortal 2', game:'Valorant', city:'Kolkata', score:88, avail:'open', tags:['Strategist','Leader'], color:'linear-gradient(135deg,#8B5CF6,#EC4899)', init:'T' },
+  { ign:'GhostLine', role:'Support', rank:'Diamond 2', game:'Valorant', city:'Jaipur', score:74, avail:'open', tags:['Team Player','Util Usage'], color:'linear-gradient(135deg,#06B6D4,#10B981)', init:'G' },
+  { ign:'NovaBurst', role:'Duelist', rank:'Immortal 1', game:'BGMI', city:'Lucknow', score:83, avail:'open', tags:['Drop God','Rotations'], color:'linear-gradient(135deg,#F59E0B,#8B5CF6)', init:'N' },
+  { ign:'FrostSniper', role:'Support', rank:'Immortal 3', game:'BGMI', city:'Chandigarh', score:86, avail:'maybe', tags:['Long Range','Calm IGL'], color:'linear-gradient(135deg,#00D4FF,#10B981)', init:'F' },
+  { ign:'ByteHunter', role:'IGL', rank:'Diamond 3', game:'CS2', city:'Ahmedabad', score:76, avail:'open', tags:['AWP','Entry Fragger'], color:'linear-gradient(135deg,#EF4444,#8B5CF6)', init:'B' },
+  { ign:'CipherOps', role:'Sentinel', rank:'Immortal 2', game:'Valorant', city:'Surat', score:82, avail:'open', tags:['Info Broker','Smart Play'], color:'linear-gradient(135deg,#8B5CF6,#F59E0B)', init:'C' },
+];
+
+let filtered = [...PLAYERS];
+
+function filterPlayers() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const game = document.getElementById('gameFilter').value;
+  const role = document.getElementById('roleFilter').value;
+  const rank = document.getElementById('rankFilter').value;
+  const avail = document.getElementById('availFilter').value;
+
+  filtered = PLAYERS.filter(p => {
+    if (search && !p.ign.toLowerCase().includes(search) && !p.city.toLowerCase().includes(search) && !p.rank.toLowerCase().includes(search)) return false;
+    if (game && p.game !== game) return false;
+    if (role && p.role !== role) return false;
+    if (rank && !p.rank.includes(rank)) return false;
+    if (avail && p.avail !== avail) return false;
+    return true;
+  });
+  renderGrid();
+}
+
+function renderGrid() {
+  const grid = document.getElementById('playerGrid');
+  const count = document.getElementById('resultsCount');
+  count.textContent = `${filtered.length} player${filtered.length !== 1 ? 's' : ''} found`;
+
+  grid.innerHTML = filtered.map(p => `
+    <a href="profile.html" class="player-card">
+      <div class="pc-header">
+        <div class="pc-avatar" style="background:${p.color}">${p.init}</div>
+        <div class="pc-meta">
+          <div class="pc-ign">${p.ign}</div>
+          <div class="pc-sub">${p.role} · ${p.city}</div>
+        </div>
+        <div class="pc-score">${p.score}</div>
+      </div>
+      <div class="pc-tags">
+        <span class="badge badge-${p.rank.includes('Radiant') ? 'purple' : p.rank.includes('Immortal') ? 'cyan' : 'amber'}">${p.rank}</span>
+        <span class="badge ${p.game === 'Valorant' ? 'badge-red' : p.game === 'BGMI' ? 'badge-amber' : 'badge-cyan'}">${p.game}</span>
+        <span class="badge badge-${p.avail === 'open' ? 'green' : 'amber'}">${p.avail === 'open' ? '✓ Open' : '~ Considering'}</span>
+      </div>
+      <div class="pc-skill-tags">
+        ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+      </div>
+      <div class="pc-footer">
+        <span style="color:var(--text-muted);font-size:0.78rem">View Full Profile →</span>
+      </div>
+    </a>
+  `).join('');
+}
+
+renderGrid();
+</script>
+</body>
+</html>

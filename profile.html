@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>R3FLEX — Player Profile · ScoutGG</title>
+<meta name="description" content="R3FLEX — Radiant IGL from Bangalore. 92 ScoutGG score. Open to trials. View full AI scouting report."/>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="profile.css"/>
+</head>
+<body>
+<canvas id="particles-canvas"></canvas>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo"><div class="logo-icon">⚡</div>Scout<span class="gradient-text">GG</span></a>
+    <div class="nav-links">
+      <a href="discover.html" class="nav-link">Discover</a>
+      <a href="dashboard.html" class="nav-link">For Teams</a>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <a href="dashboard.html" class="btn btn-ghost btn-sm">Log In</a>
+      <a href="profile.html" class="btn btn-primary btn-sm">Get Scouted</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+  <div class="container profile-layout">
+
+    <!-- LEFT COLUMN -->
+    <aside class="profile-left">
+      <!-- Hero card -->
+      <div class="profile-hero-card card-glass">
+        <div class="profile-banner"></div>
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar">R</div>
+          <div class="avail-badge"><span class="avail-dot avail-open"></span> Open to Trials</div>
+        </div>
+        <div class="profile-id">
+          <h1 class="profile-ign">R3FLEX</h1>
+          <div class="profile-sub">
+            <span class="role-pill">🎯 IGL</span>
+            <span class="rank-badge">⚡ Radiant</span>
+          </div>
+          <div style="font-size:0.82rem;color:var(--text-muted);margin-top:6px">📍 Bangalore, India · Valorant</div>
+        </div>
+        <div class="profile-score-row">
+          <div class="profile-score-box">
+            <div class="profile-score-num">92</div>
+            <div class="profile-score-label">ScoutGG Score</div>
+          </div>
+          <div class="profile-score-box">
+            <div class="profile-score-num" style="font-size:1.4rem">#14</div>
+            <div class="profile-score-label">India IGL Rank</div>
+          </div>
+          <div class="profile-score-box">
+            <div class="profile-score-num" style="font-size:1.4rem">18</div>
+            <div class="profile-score-label">Months Active</div>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <a href="#" class="btn btn-primary" style="flex:1;justify-content:center">📨 Send Trial Invite</a>
+          <a href="#" class="btn btn-ghost btn-sm">💬</a>
+          <a href="#" class="btn btn-ghost btn-sm">🔖</a>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div class="card" style="display:flex;flex-direction:column;gap:10px">
+        <div class="section-label">Skills & Tags</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="tag">🧠 Shot Caller</span>
+          <span class="tag">📹 VOD Reviewer</span>
+          <span class="tag">🎙️ Comms Leader</span>
+          <span class="tag">🔥 Clutch</span>
+          <span class="tag">📊 Data Driven</span>
+          <span class="tag">🤝 Mentor</span>
+        </div>
+      </div>
+
+      <!-- Games -->
+      <div class="card" style="display:flex;flex-direction:column;gap:10px">
+        <div class="section-label">Game Accounts</div>
+        <div class="game-account"><div class="game-icon" style="background:linear-gradient(135deg,#EC4899,#8B5CF6)">V</div><div><div style="font-weight:600;font-size:0.88rem">Valorant</div><div style="font-size:0.75rem;color:var(--text-muted)">R3FLEX#IGL · Radiant</div></div><span class="badge badge-purple">Verified</span></div>
+        <div class="game-account"><div class="game-icon" style="background:linear-gradient(135deg,#06B6D4,#8B5CF6)">D</div><div><div style="font-weight:600;font-size:0.88rem">Discord</div><div style="font-size:0.75rem;color:var(--text-muted)">r3flex_igl</div></div><span class="badge badge-cyan">Linked</span></div>
+        <div class="game-account"><div class="game-icon" style="background:linear-gradient(135deg,#EF4444,#F59E0B)">YT</div><div><div style="font-weight:600;font-size:0.88rem">YouTube</div><div style="font-size:0.75rem;color:var(--text-muted)">R3FLEX Gaming · 4.2K subs</div></div><span class="badge badge-amber">Linked</span></div>
+      </div>
+    </aside>
+
+    <!-- RIGHT COLUMN -->
+    <main class="profile-right">
+      <!-- Tabs -->
+      <div class="tabs" style="margin-bottom:24px">
+        <button class="tab active" onclick="showProfileTab('overview',this)" id="tab-btn-overview">Overview</button>
+        <button class="tab" onclick="showProfileTab('ai',this)" id="tab-btn-ai">AI Report</button>
+        <button class="tab" onclick="showProfileTab('highlights',this)" id="tab-btn-highlights">Highlights</button>
+        <button class="tab" onclick="showProfileTab('history',this)" id="tab-btn-history">History</button>
+      </div>
+
+      <!-- OVERVIEW TAB -->
+      <div id="ptab-overview">
+        <div class="profile-bio card" style="margin-bottom:16px">
+          <div class="section-label" style="margin-bottom:10px">About</div>
+          <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7">
+            Radiant-ranked IGL with 18 months of competitive Valorant experience. Former captain of Team Nexus (VCT Game Changers qualifier). Known for structured comms, deep map knowledge, and ability to adapt strategies mid-round. Looking for a semi-pro org with serious practice schedule and LAN ambitions.
+          </p>
+        </div>
+        <!-- Stats grid -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
+          <div class="stat-mini-card"><div class="stat-mini-num">1.87</div><div class="stat-mini-label">K/D Ratio</div></div>
+          <div class="stat-mini-card"><div class="stat-mini-num">67%</div><div class="stat-mini-label">Win Rate</div></div>
+          <div class="stat-mini-card"><div class="stat-mini-num">94%</div><div class="stat-mini-label">HS Rate</div></div>
+          <div class="stat-mini-card"><div class="stat-mini-num">312</div><div class="stat-mini-label">Ranked Hours</div></div>
+          <div class="stat-mini-card"><div class="stat-mini-num">8</div><div class="stat-mini-label">Tournaments</div></div>
+          <div class="stat-mini-card"><div class="stat-mini-num">Top 3</div><div class="stat-mini-label">Best Finish</div></div>
+        </div>
+        <!-- Radar -->
+        <div class="card" style="margin-bottom:16px">
+          <div class="section-label" style="margin-bottom:14px">Performance Radar</div>
+          <canvas id="profileRadar" width="360" height="260"></canvas>
+        </div>
+        <!-- Availability -->
+        <div class="card">
+          <div class="section-label" style="margin-bottom:12px">Availability</div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+            <div class="avail-detail"><span style="color:var(--text-muted);font-size:0.8rem">Practice Days</span><span>Mon–Fri, 7PM–11PM</span></div>
+            <div class="avail-detail"><span style="color:var(--text-muted);font-size:0.8rem">Weekend</span><span>Full Day</span></div>
+            <div class="avail-detail"><span style="color:var(--text-muted);font-size:0.8rem">LAN Travel</span><span style="color:var(--green)">✓ Available</span></div>
+            <div class="avail-detail"><span style="color:var(--text-muted);font-size:0.8rem">Relocate</span><span style="color:var(--amber)">Open to discuss</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI REPORT TAB -->
+      <div id="ptab-ai" style="display:none">
+        <div class="ai-report-header card" style="margin-bottom:16px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+            <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--cyan),var(--purple));display:flex;align-items:center;justify-content:center;font-size:1.1rem">🤖</div>
+            <div><div style="font-weight:700">ScoutGG AI Scouting Report</div><div style="font-size:0.75rem;color:var(--text-muted)">Generated May 8, 2026 · Based on 312 ranked games + 3 VODs</div></div>
+            <span class="badge badge-green" style="margin-left:auto">Verified</span>
+          </div>
+          <p style="color:var(--text-secondary);font-size:0.88rem;line-height:1.7;background:var(--bg-surface);padding:14px;border-radius:var(--radius-sm);border-left:3px solid var(--cyan)">
+            R3FLEX demonstrates exceptional in-game leadership and strategic thinking. His clutch rate (top 3% nationally) combined with low toxicity score and strong Discord reputation makes him an ideal acquisition for any serious team seeking an IGL upgrade.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="section-label" style="margin-bottom:4px">Metric Breakdown</div>
+          <div class="ai-metric-row"><span>Clutch Score</span><div class="ai-metric-bar"><div class="ai-metric-fill" style="width:94%;background:linear-gradient(90deg,var(--cyan),var(--purple))"></div></div><span class="ai-metric-val">94</span><span class="badge badge-cyan">Elite</span></div>
+          <div class="ai-metric-row"><span>Consistency</span><div class="ai-metric-bar"><div class="ai-metric-fill" style="width:89%;background:linear-gradient(90deg,var(--purple),var(--pink))"></div></div><span class="ai-metric-val">89</span><span class="badge badge-cyan">High</span></div>
+          <div class="ai-metric-row"><span>Teamplay Score</span><div class="ai-metric-bar"><div class="ai-metric-fill" style="width:88%;background:linear-gradient(90deg,var(--pink),var(--purple))"></div></div><span class="ai-metric-val">88</span><span class="badge badge-cyan">High</span></div>
+          <div class="ai-metric-row"><span>Communication</span><div class="ai-metric-bar"><div class="ai-metric-fill" style="width:96%;background:linear-gradient(90deg,var(--green),var(--cyan))"></div></div><span class="ai-metric-val">96</span><span class="badge badge-green">Top 1%</span></div>
+          <div class="ai-metric-row"><span>Pressure Handling</span><div class="ai-metric-bar"><div class="ai-metric-fill" style="width:91%;background:linear-gradient(90deg,var(--cyan),var(--purple))"></div></div><span class="ai-metric-val">91</span><span class="badge badge-cyan">Elite</span></div>
+          <div class="ai-metric-row"><span>Leadership Score</span><div class="ai-metric-bar"><div class="ai-metric-fill" style="width:93%;background:linear-gradient(90deg,var(--purple),var(--cyan))"></div></div><span class="ai-metric-val">93</span><span class="badge badge-cyan">Elite</span></div>
+          <div class="ai-metric-row"><span>Toxicity Risk</span><div class="ai-metric-bar"><div class="ai-metric-fill" style="width:4%;background:var(--green)"></div></div><span class="ai-metric-val" style="color:var(--green)">4</span><span class="badge badge-green">Very Low</span></div>
+          <div class="ai-metric-row"><span>Community Rep.</span><div class="ai-metric-bar"><div class="ai-metric-fill" style="width:88%;background:linear-gradient(90deg,var(--amber),var(--green))"></div></div><span class="ai-metric-val">88</span><span class="badge badge-amber">Strong</span></div>
+        </div>
+      </div>
+
+      <!-- HIGHLIGHTS TAB -->
+      <div id="ptab-highlights" style="display:none">
+        <div class="section-label" style="margin-bottom:14px">Gameplay Highlights</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="highlight-card">
+            <div class="highlight-thumb">▶</div>
+            <div class="highlight-info">
+              <div style="font-weight:700">4K Clutch vs Team Alpha — Bind A-Site</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">2:34 · Ranked Match · Radiant MMR</div>
+              <div style="margin-top:8px;display:flex;gap:6px"><span class="tag">Clutch</span><span class="tag">4K</span><span class="tag">Pistol Round</span></div>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-thumb">▶</div>
+            <div class="highlight-info">
+              <div style="font-weight:700">IGL Comms Breakdown — Economy Reset</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">5:12 · Tournament VOD · VCED Open</div>
+              <div style="margin-top:8px;display:flex;gap:6px"><span class="tag">IGL Comms</span><span class="tag">Strategy</span></div>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-thumb">▶</div>
+            <div class="highlight-info">
+              <div style="font-weight:700">1v3 Retake Win — Ascent B-Site</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">1:47 · Scrim footage</div>
+              <div style="margin-top:8px;display:flex;gap:6px"><span class="tag">Mechanical</span><span class="tag">Retake</span><span class="tag">1v3</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HISTORY TAB -->
+      <div id="ptab-history" style="display:none">
+        <div class="section-label" style="margin-bottom:14px">Tournament History</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="history-row"><div style="flex:1"><div style="font-weight:700">VCED Open — Spring 2026</div><div style="font-size:0.78rem;color:var(--text-muted)">Team Nexus · Online</div></div><span class="badge badge-amber">🏅 3rd Place</span></div>
+          <div class="history-row"><div style="flex:1"><div style="font-weight:700">Skyline Invitational 2025</div><div style="font-size:0.78rem;color:var(--text-muted)">Team Nexus · Bangalore LAN</div></div><span class="badge badge-cyan">Top 8</span></div>
+          <div class="history-row"><div style="flex:1"><div style="font-weight:700">NSL Qualifier — Fall 2025</div><div style="font-size:0.78rem;color:var(--text-muted)">Free Agent · Online</div></div><span class="badge badge-amber">Top 16</span></div>
+          <div class="history-row"><div style="flex:1"><div style="font-weight:700">BGIS College Circuit 2025</div><div style="font-size:0.78rem;color:var(--text-muted)">Self-organized · Online</div></div><span class="badge badge-purple">🥈 2nd Place</span></div>
+          <div class="history-row" style="border:none"><div style="flex:1"><div style="font-weight:700">VCT Game Changers Qualifier</div><div style="font-size:0.78rem;color:var(--text-muted)">Team Nexus · Open Qualifier</div></div><span class="badge badge-red">Qualified</span></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="particles.js"></script>
+<script>
+function showProfileTab(id, el) {
+  ['overview','ai','highlights','history'].forEach(t => {
+    const el2 = document.getElementById('ptab-' + t);
+    if (el2) el2.style.display = 'none';
+  });
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  const target = document.getElementById('ptab-' + id);
+  if (target) target.style.display = 'block';
+  el.classList.add('active');
+}
+
+// Radar chart
+window.addEventListener('load', () => {
+  const canvas = document.getElementById('profileRadar');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const labels = ['Clutch','Consistent','Teamplay','Comms','Pressure','Adapt','Leadership'];
+  const data = [94, 89, 88, 96, 91, 87, 93];
+  drawRadar(ctx, canvas.width, canvas.height, labels, data);
+});
+
+function drawRadar(ctx, w, h, labels, data) {
+  const cx = w/2, cy = h/2, r = Math.min(w,h)/2 - 40;
+  const n = labels.length;
+  const angle = i => (i * 2 * Math.PI / n) - Math.PI/2;
+  ctx.clearRect(0,0,w,h);
+  [0.2,0.4,0.6,0.8,1].forEach(scale => {
+    ctx.beginPath();
+    for(let i=0;i<n;i++){const x=cx+Math.cos(angle(i))*r*scale,y=cy+Math.sin(angle(i))*r*scale;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+    ctx.closePath();
+    ctx.strokeStyle=scale===1?'rgba(139,92,246,0.3)':'rgba(255,255,255,0.05)';ctx.lineWidth=1;ctx.stroke();
+  });
+  for(let i=0;i<n;i++){ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(angle(i))*r,cy+Math.sin(angle(i))*r);ctx.strokeStyle='rgba(255,255,255,0.07)';ctx.lineWidth=1;ctx.stroke();}
+  ctx.beginPath();
+  data.forEach((d,i)=>{const s=d/100,x=cx+Math.cos(angle(i))*r*s,y=cy+Math.sin(angle(i))*r*s;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+  ctx.closePath();
+  const grad=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+  grad.addColorStop(0,'rgba(139,92,246,0.4)');grad.addColorStop(1,'rgba(0,212,255,0.1)');
+  ctx.fillStyle=grad;ctx.fill();
+  ctx.strokeStyle='rgba(0,212,255,0.8)';ctx.lineWidth=2;ctx.stroke();
+  data.forEach((d,i)=>{const s=d/100,x=cx+Math.cos(angle(i))*r*s,y=cy+Math.sin(angle(i))*r*s;ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fillStyle='#00D4FF';ctx.fill();});
+  ctx.font='bold 10px Inter';ctx.textAlign='center';ctx.textBaseline='middle';
+  labels.forEach((l,i)=>{const dist=r+22,x=cx+Math.cos(angle(i))*dist,y=cy+Math.sin(angle(i))*dist;ctx.fillStyle='rgba(255,255,255,0.6)';ctx.fillText(l,x,y);});
+}
+</script>
+</body>
+</html>
